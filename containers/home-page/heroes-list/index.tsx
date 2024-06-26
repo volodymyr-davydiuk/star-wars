@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import ListItem from '@/containers/home-page/heroes-list/listItem';
+import ListItem from '@/components/content/home/listItem';
 
 interface HeroesListProps {
   heroes?: Array<{
@@ -29,9 +29,9 @@ const HeroesList: FC<HeroesListProps> = ({ heroes }) => {
     <div className="heroes-list">
       {heroes?.map((hero, index) => {
           return (
-            <>
-              <ListItem hero={hero} index={index}/>
-            </>
+            <div key={`heroes-list-wrap-${index}`}>
+              <ListItem hero={hero} index={index} />
+            </div>
           )
         }
       )}

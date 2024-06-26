@@ -1,9 +1,13 @@
-import React, {useState} from 'react';
-import {Background, ReactFlow} from 'reactflow';
+import React, {FC, useState} from 'react';
+import {Background, BackgroundVariant, ReactFlow} from 'reactflow';
 
 import 'reactflow/dist/style.css';
 
-const HeroGraph = () => {
+type HeroGraphProps = {
+
+}
+
+const HeroGraph: FC<HeroGraphProps> = () => {
   const initialNodes = [
     {
       id: '1',
@@ -37,7 +41,7 @@ const HeroGraph = () => {
   return (
     <div style={{width:'100%', height:'400px'}}>
       <ReactFlow edges={edges} nodes={nodes} fitView>
-        <Background variant="dots" gap={12} size={1} />
+        <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
       </ReactFlow>
     </div>
   );

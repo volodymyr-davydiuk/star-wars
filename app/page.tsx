@@ -1,6 +1,6 @@
 'use client'
 
-import {FC, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {fetchData} from '@/store/dataStore';
 import HeroesList from '@/containers/home-page/heroes-list';
 
@@ -26,11 +26,9 @@ type DataProps = {
   }>;
 }
 
-type HomePageProps = {
-}
-
-const Home: FC<HomePageProps> = () => {
+const Home = () => {
   const [heroes, setHeroes] = useState<DataProps>({results: []});
+  console.log(heroes);
 
   useEffect(() => {
     fetchData().then(response => {
@@ -42,7 +40,9 @@ const Home: FC<HomePageProps> = () => {
   return (
     <main className={"flex justify-center"}>
       <div className="container">
-        <HeroesList heroes={heroes.results}/>
+        {heroes.results.length > 0 && (
+          <HeroesList heroes={heroes?.results}/>
+        )}
       </div>
     </main>
   );
